@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -27,22 +28,20 @@ namespace Sikuru.ExcelTableBuilder
             _working_folder = working_folder;
             _namespace_name = namespace_name;
 
-            bool initial_build = false;
-            if (bin_data_filename == null)
+            if (string.IsNullOrEmpty(bin_data_filename) == true)
             {
-                bin_data_filename = $"excel_table_builder_bin_{DateTime.Now.ToString("yyyyMMddHHmmssfff")}.bytes";
-                initial_build = true;
+                bin_data_filename = $"excel_table_bin_{DateTime.Now.ToString("yyyyMMddHHmmssfff")}.bytes";
             }
 
             var bin_fi = new FileInfo(Path.Combine(working_folder, bin_data_filename));
 
             // 엑셀 테이블 Raw 데이터 생성
             var excel_tabale_builder = new ExcelTableBuild();
-            _table_raw_store = excel_tabale_builder.Build(working_folder, initial_build);
+            _table_raw_store = excel_tabale_builder.Build(working_folder, bin_data_filename);
             excel_tabale_builder.Dispose();
             if (_table_raw_store == null)
             {
-                Console.WriteLine("엑셀 파일이 없거나 읽을 수 없습니다.");
+                Trace.WriteLine("엑셀 파일이 없거나 읽을 수 없습니다.");
                 return;
             }
         }

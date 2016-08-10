@@ -127,22 +127,21 @@ namespace Sikuru.ExcelTableBuilder
             return _table_raw_data_store;
         }
 
-        public TableRawDataStore Build(string build_path, bool initial_build)
+        public TableRawDataStore Build(string build_path, string bin_data_filename)
         {
-            //var preparsed = new FileInfo(string.Format(@"{0}\TdbRawData.preparsed", build_path));
-            //if (preparsed.Exists && preparsed.Length > 0)
-            //{
-            //	Trace.WriteLine("Load preparsed data {0}", preparsed.Length);
-            //	using (var br = new BinaryReader(preparsed.OpenRead()))
-            //	{
-            //		int length = br.ReadInt32();
-            //		byte[] compressed = br.ReadBytes(length);
-            //		byte[] preparsed_bytes = LibLZF.CLZF2.Decompress(compressed);
-            //		_table_raw_data_store = TableBinConverter.ClassMaker<TableRawDataStore>(preparsed_bytes);
-            //	}
-            //}
+			var bin_file = new FileInfo(Path.Combine(build_path, bin_data_filename));
+			// 기존 바이너리 파일이 존재하는 경우 읽기
+			if (bin_file.Exists && bin_file.Length > 0)
+			{
+				using (var br = new BinaryReader(bin_file.OpenRead()))
+				{
+					int length = br.ReadInt32();
+					byte[] bin_bytes = br.ReadBytes(length);
+					_table_raw_data_store = TableBinConverter.ClassMaker<TableRawDataStore>(bin_bytes);
+				}
+			}
 
-            var start_time = DateTime.UtcNow;
+			var start_time = DateTime.UtcNow;
 
             _excel_app = new Excel.Application();
             _excel_app.Visible = false;
