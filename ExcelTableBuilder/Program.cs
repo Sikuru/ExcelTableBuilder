@@ -56,12 +56,18 @@ namespace Sikuru.ExcelTableBuilder
                 var builder = new Builder();
                 builder.Build(Directory.GetCurrentDirectory(), bin_filename, namespace_name);
                 Trace.WriteLine("빌드 완료.");
+#if DEBUG
+                Console.ReadLine();
+#endif
                 Environment.Exit(0);
                 return 0;
             }
             catch (Exception e)
             {
-                Trace.WriteLine("빌드 오류: {0}", e.Message);
+                Trace.WriteLine($"빌드 오류: {e.Message}");
+#if DEBUG
+                Console.ReadLine();
+#endif
                 Environment.Exit(1);
                 return 1;
             }

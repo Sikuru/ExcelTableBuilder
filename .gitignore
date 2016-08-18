@@ -3,5 +3,6 @@
 ################################################################################
 
 *.suo
+*.user
 /ExcelTableBuilder/bin/Debug
 /ExcelTableBuilder/obj/Debug

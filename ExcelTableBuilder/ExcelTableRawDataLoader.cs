@@ -80,6 +80,7 @@ namespace Sikuru.ExcelTableBuilder
     public class TableRawDataStore : TableBinConvertable
     {
         public List<TableRawData> RawDataList { get; set; }
+        public int LastID { get; set; }
     }
 
     struct TableRange
@@ -127,9 +128,9 @@ namespace Sikuru.ExcelTableBuilder
             return _table_raw_data_store;
         }
 
-        public TableRawDataStore Build(string build_path, string bin_data_filename)
+        public TableRawDataStore Build(string build_path)
         {
-			var bin_file = new FileInfo(Path.Combine(build_path, bin_data_filename));
+			var bin_file = new FileInfo(Path.Combine(build_path, "preparsed.bin"));
 			// 기존 바이너리 파일이 존재하는 경우 읽기
 			if (bin_file.Exists && bin_file.Length > 0)
 			{
@@ -187,29 +188,24 @@ namespace Sikuru.ExcelTableBuilder
                             for (int i = 0; i < remove_list.Count; ++i)
                             {
                                 _table_raw_data_store.RawDataList.Remove(remove_list[i]);
-                                Trace.WriteLine("Removed preparsed... {0}", remove_list[i].TableName);
+                                Trace.WriteLine($"Removed preparsed... {remove_list[i].TableName}");
                             }
                         }
                     }
 
-                    Trace.WriteLine($"\r\nParsing... {filename} ({filehash})");
+                    Trace.WriteLine($"Parsing... {filename} ({filehash})");
                     Parse2(filepath, filename, filehash);
                 }
 
-                //int preparsed_length = 0;
-                //using (var bw = new BinaryWriter(preparsed.OpenWrite()))
+                //using (var bw = new BinaryWriter(bin_file.OpenWrite()))
                 //{
-                //	byte[] preparsed_bytes = TableBinConverter.BinMaker(_table_raw_data_store);
-                //	byte[] compressed = LibLZF.CLZF2.Compress(preparsed_bytes);
-
-                //	preparsed_length = compressed.Length;
-
-                //	byte[] length_bytes = BitConverter.GetBytes(preparsed_length);
-                //	bw.Write(length_bytes, 0, length_bytes.Length);
-                //	bw.Write(compressed, 0, compressed.Length);
+                //    byte[] preparsed_bytes = TableBinConverter.BinMaker(_table_raw_data_store);
+                //    byte[] length_bytes = BitConverter.GetBytes(preparsed_bytes.Length);
+                //    bw.Write(length_bytes, 0, length_bytes.Length);
+                //    bw.Write(preparsed_bytes, 0, preparsed_bytes.Length);
                 //}
 
-                Trace.WriteLine($"\r\nParse Completed. {(DateTime.UtcNow - start_time).ToString()}");
+                Trace.WriteLine($"Parse Completed. {(DateTime.UtcNow - start_time).TotalMilliseconds} msec");
                 return _table_raw_data_store;
             }
             finally

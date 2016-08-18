@@ -1,23 +1,124 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Text;
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
 
-namespace Sikuru.ExcelTableBuilder
-{
-    /*
-     * 번외의 DLL을 생성하지 않기 위한 단순한 클래스 <-> 바이너리 컨버터. Goo*le의 Prot*Buf 보다는 느리지만 아주 느리지도 않습니다.
-     * 용량은 적절한 바이트 단위이고, 해당 클래스 구조의 변화에 대한 검증을 하지 않습니다.
-     * 프로퍼티 이름에 의한 리플렉션으로 찾아 deserialize를 하기 때문에 클래스 구조가 매칭되지 않는 것에 대한 위험성이 있습니다.
-     * 
-     * TableBinConvertable 인터페이스를 구현한 클래스도 프로퍼티로 가질 수 있고, depth의 제한은 없습니다.
-     * TableBinConvertable 인터페이스를 구현한 클래스와 그 외 지원 가능한 타입은 이하 private static readonly Type 들에 대한 타입만 지원합니다.
-     */
-
-    public interface TableBinConvertable
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="TableBinConverterSource" xml:space="preserve">
+    <value>public interface TableBinConvertable
 	{
 	}
 
@@ -35,7 +136,7 @@ namespace Sikuru.ExcelTableBuilder
 		private static readonly Type TypeString = typeof(System.String);
 		private static readonly Type TypeByte = typeof(System.Byte);
 		private static readonly Type TypeGuid = typeof(System.Guid);
-		private static readonly Type TypeList = typeof(System.Collections.Generic.List<>);
+		private static readonly Type TypeList = typeof(System.Collections.Generic.List&lt;&gt;);
 		private const int SizeOfInt16 = sizeof(System.Int16);
 		private const int SizeOfInt32 = sizeof(System.Int32);
 		private const int SizeOfInt64 = sizeof(System.Int64);
@@ -45,21 +146,21 @@ namespace Sikuru.ExcelTableBuilder
 		private const int SizeOfByte = sizeof(System.Byte);
 		private const int SizeOfGuid = 16;
 
-		public static T ClassMaker<T>(byte[] byte_data) where T : TableBinConvertable, new()
+		public static T ClassMaker&lt;T&gt;(byte[] byte_data) where T : TableBinConvertable, new()
 		{
 			var class_object = new T();
 			ClassMaker(byte_data, ref class_object);
 			return class_object;
 		}
 
-		public static T ClassMaker<T>(MemoryStream ms) where T : TableBinConvertable, new()
+		public static T ClassMaker&lt;T&gt;(MemoryStream ms) where T : TableBinConvertable, new()
 		{
 			var class_object = new T();
 			ClassMaker(ms, ref class_object);
 			return class_object;
 		}
 
-		public static void ClassMaker<T>(byte[] byte_data, ref T class_object) where T : TableBinConvertable
+		public static void ClassMaker&lt;T&gt;(byte[] byte_data, ref T class_object) where T : TableBinConvertable
 		{
 			Type type = typeof(T);
 			object raw_object = (object)class_object;
@@ -69,7 +170,7 @@ namespace Sikuru.ExcelTableBuilder
 			}
 		}
 
-		public static void ClassMaker<T>(MemoryStream ms, ref T class_object) where T : TableBinConvertable
+		public static void ClassMaker&lt;T&gt;(MemoryStream ms, ref T class_object) where T : TableBinConvertable
 		{
 			Type type = typeof(T);
 			object raw_object = (object)class_object;
@@ -107,7 +208,7 @@ namespace Sikuru.ExcelTableBuilder
 			}
 
 			var all_pi = type.GetProperties();
-			var pi_dic = new SortedDictionary<string, PropertyInfo>(all_pi.ToDictionary(x => x.Name));
+			var pi_dic = new SortedDictionary&lt;string, PropertyInfo&gt;(all_pi.ToDictionary(x =&gt; x.Name));
 
 			byte[] bytes = new byte[SizeOfGuid];
 			foreach (var kv in pi_dic)
@@ -191,7 +292,7 @@ namespace Sikuru.ExcelTableBuilder
 				{
 					ms.Read(bytes, 0, SizeOfInt32);
 					int string_length = BitConverter.ToInt32(bytes, 0);
-					if (string_length > 0)
+					if (string_length &gt; 0)
 					{
 						byte[] string_bytes = new byte[string_length];
 						ms.Read(string_bytes, 0, string_length);
@@ -200,7 +301,7 @@ namespace Sikuru.ExcelTableBuilder
 					}
 					else
 					{
-						kv.Value.SetValue(class_object, string.Empty, null);
+						kv.Value.SetValue(class_object, String.Empty, null);
 					}
 				}
 				else
@@ -208,7 +309,7 @@ namespace Sikuru.ExcelTableBuilder
 					ms.Read(bytes, 0, SizeOfInt32);
 					int length = BitConverter.ToInt32(bytes, 0);
 
-					if (length > 0)
+					if (length &gt; 0)
 					{
 						if (kv.Value.PropertyType.IsArray)
 						{
@@ -224,7 +325,7 @@ namespace Sikuru.ExcelTableBuilder
 							else
 							{
 								Array array = Array.CreateInstance(array_type, length);
-								for (int i = 0; i < length; ++i)
+								for (int i = 0; i &lt; length; ++i)
 								{
 									object child_class;
 
@@ -307,7 +408,7 @@ namespace Sikuru.ExcelTableBuilder
 									{
 										ms.Read(bytes, 0, SizeOfInt32);
 										int string_length = BitConverter.ToInt32(bytes, 0);
-										if (string_length > 0)
+										if (string_length &gt; 0)
 										{
 											byte[] string_bytes = new byte[string_length];
 											ms.Read(string_bytes, 0, string_length);
@@ -316,7 +417,7 @@ namespace Sikuru.ExcelTableBuilder
 										}
 										else
 										{
-											child_class = string.Empty;
+											child_class = String.Empty;
 										}
 									}
 									else
@@ -331,20 +432,20 @@ namespace Sikuru.ExcelTableBuilder
 								kv.Value.SetValue(class_object, array, null);
 							}
 						}
-						else if (kv.Value.PropertyType.IsGenericType && kv.Value.PropertyType.GetGenericTypeDefinition() == TypeList)
+						else if (kv.Value.PropertyType.IsGenericType &amp;&amp; kv.Value.PropertyType.GetGenericTypeDefinition() == TypeList)
 						{
 							Type item_type = kv.Value.PropertyType.GetGenericArguments()[0];
 							Type[] list_args = { item_type };
 
 							object list = Activator.CreateInstance(TypeList.MakeGenericType(list_args), null);
 
-							for (int i = 0; i < length; ++i)
+							for (int i = 0; i &lt; length; ++i)
 							{
 								object child_class;
 
 								if (item_type == TypeByte)
 								{
-									throw new NotSupportedException("List<byte> is not supported");
+									throw new NotSupportedException("List&lt;byte&gt; is not supported");
 								}
 								else if (item_type == TypeInt16)
 								{
@@ -420,7 +521,7 @@ namespace Sikuru.ExcelTableBuilder
 								{
 									ms.Read(bytes, 0, SizeOfInt32);
 									int string_length = BitConverter.ToInt32(bytes, 0);
-									if (string_length > 0)
+									if (string_length &gt; 0)
 									{
 										byte[] string_bytes = new byte[string_length];
 										ms.Read(string_bytes, 0, string_length);
@@ -429,7 +530,7 @@ namespace Sikuru.ExcelTableBuilder
 									}
 									else
 									{
-										child_class = string.Empty;
+										child_class = String.Empty;
 									}
 								}
 								else
@@ -452,7 +553,7 @@ namespace Sikuru.ExcelTableBuilder
 					}
 					else
 					{
-						if (kv.Value.PropertyType.IsGenericType && kv.Value.PropertyType.GetGenericTypeDefinition() == TypeList)
+						if (kv.Value.PropertyType.IsGenericType &amp;&amp; kv.Value.PropertyType.GetGenericTypeDefinition() == TypeList)
 						{
 							Type item_type = kv.Value.PropertyType.GetGenericArguments()[0];
 							Type[] list_args = { item_type };
@@ -469,7 +570,7 @@ namespace Sikuru.ExcelTableBuilder
 			}
 		}
 
-		public static byte[] BinMaker<T>(T class_object) where T : TableBinConvertable
+		public static byte[] BinMaker&lt;T&gt;(T class_object) where T : TableBinConvertable
 		{
 			Type type = typeof(T);
 			return BinMaker(type, class_object, false);
@@ -488,7 +589,7 @@ namespace Sikuru.ExcelTableBuilder
 			}
 
 			var all_pi = type.GetProperties();
-			var pi_dic = new SortedDictionary<string, PropertyInfo>(all_pi.ToDictionary(x => x.Name));
+			var pi_dic = new SortedDictionary&lt;string, PropertyInfo&gt;(all_pi.ToDictionary(x =&gt; x.Name));
 
 			using (var ms = new MemoryStream())
 			{
@@ -578,10 +679,10 @@ namespace Sikuru.ExcelTableBuilder
 									else if (array_type == TypeString)
 									{
 										string string_data = array_object == null ? "" : array_object.ToString();
-										if (!string.IsNullOrEmpty(string_data))
+										if (!String.IsNullOrEmpty(string_data))
 										{
 											byte[] string_bytes = Encoding.UTF8.GetBytes(string_data);
-											if (string_bytes.Length > int.MaxValue)
+											if (string_bytes.Length &gt; int.MaxValue)
 											{
 												throw new ArgumentOutOfRangeException(kv.Value.Name);
 											}
@@ -608,7 +709,7 @@ namespace Sikuru.ExcelTableBuilder
 							ms.Write(ZeroLengthBytes, 0, ZeroLengthBytes.Length);
 						}
 					}
-					else if (kv.Value.PropertyType.IsGenericType && kv.Value.PropertyType.GetGenericTypeDefinition() == TypeList)
+					else if (kv.Value.PropertyType.IsGenericType &amp;&amp; kv.Value.PropertyType.GetGenericTypeDefinition() == TypeList)
 					{
 						var list = kv.Value.GetValue(class_object, null);
 
@@ -625,7 +726,7 @@ namespace Sikuru.ExcelTableBuilder
 							{
 								if (item_type == TypeByte)
 								{
-									throw new NotSupportedException("List<byte> not supported");
+									throw new NotSupportedException("List&lt;byte&gt; not supported");
 								}
 								else if (item_type == TypeInt16)
 								{
@@ -686,10 +787,10 @@ namespace Sikuru.ExcelTableBuilder
 								else if (item_type == TypeString)
 								{
 									string string_data = list_item == null ? "" : list_item.ToString();
-									if (!string.IsNullOrEmpty(string_data))
+									if (!String.IsNullOrEmpty(string_data))
 									{
 										byte[] string_bytes = Encoding.UTF8.GetBytes(string_data);
-										if (string_bytes.Length > int.MaxValue)
+										if (string_bytes.Length &gt; int.MaxValue)
 										{
 											throw new ArgumentOutOfRangeException(kv.Value.Name);
 										}
@@ -780,10 +881,10 @@ namespace Sikuru.ExcelTableBuilder
 					{
 						object string_object = kv.Value.GetValue(class_object, null);
 						string string_data = string_object == null ? "" : string_object.ToString();
-						if (!string.IsNullOrEmpty(string_data))
+						if (!String.IsNullOrEmpty(string_data))
 						{
 							byte[] string_bytes = Encoding.UTF8.GetBytes(string_data);
-							if (string_bytes.Length > int.MaxValue)
+							if (string_bytes.Length &gt; int.MaxValue)
 							{
 								throw new ArgumentOutOfRangeException(kv.Value.Name);
 							}
@@ -803,7 +904,7 @@ namespace Sikuru.ExcelTableBuilder
 						if (child_class != null)
 						{
 							byte[] bytes = BinMaker(child_class.GetType(), child_class, true);
-							if (bytes.Length > int.MaxValue)
+							if (bytes.Length &gt; int.MaxValue)
 							{
 								throw new ArgumentOutOfRangeException(kv.Value.Name);
 							}
@@ -822,5 +923,112 @@ namespace Sikuru.ExcelTableBuilder
 				return ms.ToArray();
 			}
 		}
-	}
-}
+	}</value>
+  </data>
+  <data name="TableProxy" xml:space="preserve">
+    <value>public class TableProxy&lt;TKey, TValue&gt; where TValue : TableBase, new()
+	{
+		private Dictionary&lt;TKey, int&gt; _table_map_dic;
+		private MemoryStream _ms;
+
+		private Dictionary&lt;TKey, TValue&gt; _table_parsed = new Dictionary&lt;TKey, TValue&gt;();
+		private int _count;
+
+		public TValue this[TKey id] { get { return Get(id); } }
+
+		public int Count { get { return _count; } }
+		public Dictionary&lt;TKey, int&gt;.KeyCollection Keys { get { return _table_map_dic.Keys; } }
+		public List&lt;TValue&gt; Values
+		{
+			get
+			{
+				var values = new List&lt;TValue&gt;();
+				foreach (var key in Keys)
+				{
+					values.Add(Get(key));
+				}
+
+				return values;
+			}
+		}
+
+		public TableProxy(TableMap&lt;TKey&gt; table_map, byte[] table_data_bin, bool initial_full_parse)
+		{
+			_count = table_map.Key.Count;
+			_ms = new MemoryStream(table_data_bin);
+			_table_map_dic = new Dictionary&lt;TKey, int&gt;();
+			for (int i = 0; i &lt; _count; ++i)
+			{
+				_table_map_dic.Add(table_map.Key[i], table_map.Position[i]);
+				if (initial_full_parse)
+				{
+					_ms.Position = table_map.Position[i];
+					_table_parsed.Add(table_map.Key[i], TableBinConverter.ClassMaker&lt;TValue&gt;(_ms));
+				}
+			}
+		}
+
+		public Dictionary&lt;TKey, TValue&gt; ParseAll()
+		{
+			var map_list = _table_map_dic.ToList();
+			for (int i = 0; i &lt; map_list.Count; ++i)
+			{
+				_ms.Position = map_list[i].Value;
+				_table_parsed.Add(map_list[i].Key, TableBinConverter.ClassMaker&lt;TValue&gt;(_ms));
+			}
+
+			return _table_parsed;
+		}
+
+		private TValue Get(TKey id)
+		{
+			if (_table_parsed.ContainsKey(id))
+			{
+				return _table_parsed[id];
+			}
+			else
+			{
+				_ms.Position = _table_map_dic[id];
+
+				_table_parsed.Add(id, TableBinConverter.ClassMaker&lt;TValue&gt;(_ms));
+				return _table_parsed[id];
+			}
+		}
+
+		public Dictionary&lt;TKey, TValue&gt; ToDictionary()
+		{
+			var dic = new Dictionary&lt;TKey, TValue&gt;();
+			foreach (var key in Keys)
+			{
+				dic.Add(key, Get(key));
+			}
+
+			return dic;
+		}
+
+		public Dictionary&lt;TKey, TValue&gt; GetParsedDictionary()
+		{
+			return _table_parsed;
+		}
+
+		public bool TryGetValue(TKey id, out TValue value)
+		{
+			if (!_table_map_dic.ContainsKey(id))
+			{
+				value = null;
+				return false;
+			}
+			else
+			{
+				value = Get(id);
+				return true;
+			}
+		}
+
+		public bool ContainsKey(TKey id)
+		{
+			return _table_map_dic.ContainsKey(id);
+		}
+	}</value>
+  </data>
+</root>
