@@ -49,8 +49,7 @@ C# 기반을 사용하는 클라이언트(ex. Unity3D) 및 서버에서 공통�
   + !ENUM_VALUE ; Enum 형태의 키의 값 (ENUM_KEY 와 함께 사용합니다)
 
 #####사용 예제
-<pre><code>
-var table_data_manager = TDB.TableDataManager.LoadBinaryFile("excel_table_bin.bytes");
+<pre><code>var table_data_manager = TDB.TableDataManager.LoadBinaryFile("excel_table_bin.bytes");
 TDB.TableSample1 table_sample1;
 if (table_data_manager.TableSample1.TryGetValue((int)TDB.TableKeyEnum.B10003, out table_sample1) == false)
 {
@@ -63,4 +62,4 @@ foreach (var s in table_sample1.sample_string)
 }</code></pre>
 
 #####생성된 소스 파일
-GeneratedTableSource.cs을 참조해주세요.
+* GeneratedTableSource.cs을 참조해주세요.
